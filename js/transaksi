@@ -1,0 +1,132 @@
+// Utility: format ke Rupiah
+function formatRupiah(num) {
+  return "Rp" + num.toLocaleString("id-ID");
+}
+
+// State keranjang
+let keranjang = [];
+
+// Tambah / update item
+function tambahKeKeranjang(id, nama, harga) {
+  const item = keranjang.find(i => i.id_barang === id);
+  if (item) {
+    item.jumlah++;
+    item.subtotal = item.jumlah * item.harga;
+  } else {
+    keranjang.push({ id_barang: id, nama_barang: nama, harga, jumlah: 1, subtotal: harga });
+  }
+  renderKeranjang();
+}
+
+//kuantitas
+function updateQty(idx, delta) {
+  keranjang[idx].jumlah += delta;
+  if (keranjang[idx].jumlah <= 0) {
+    keranjang.splice(idx, 1);
+  } else {
+    keranjang[idx].subtotal = keranjang[idx].jumlah * keranjang[idx].harga;
+  }
+  renderKeranjang();
+}
+
+// Render list keranjang & total
+function renderKeranjang() {
+  const list = document.getElementById("keranjangList");
+  let total = 0;
+  list.innerHTML = "";
+  keranjang.forEach((it, i) => {
+    total += it.subtotal;
+    list.innerHTML += `
+      <div class="keranjang-item">
+        <div>${it.nama_barang} x ${it.jumlah}</div>
+        <div>
+          <button type="button" onclick="updateQty(${i}, -1)">-</button>
+          <button type="button" onclick="updateQty(${i}, +1)">+</button>
+        </div>
+        <div>${formatRupiah(it.subtotal)}</div>
+      </div>`;
+  });
+  document.getElementById("totalHarga").innerText = formatRupiah(total);
+  document.getElementById("itemsInput").value = JSON.stringify(keranjang);
+}
+
+// Popup pembayaran
+function showPopup() {
+  if (!keranjang.length) {
+    alert("Keranjang masih kosong!");
+    return;
+  }
+  document.getElementById("popupMetode").style.display = "flex";
+}
+function closePopup() { document.getElementById("popupMetode").style.display = "none"; }
+function pilihMetode() {
+  closePopup();
+  document.getElementById("popupNominal").style.display = "flex";
+}
+function closeNominalPopup() { document.getElementById("popupNominal").style.display = "none"; }
+
+function submitNominal() {
+  const nominal = parseFloat(document.getElementById("inputNominal").value);
+  const total   = keranjang.reduce((s, i) => s + i.subtotal, 0);
+  if (isNaN(nominal) || nominal < total) {
+    document.getElementById("errorNominal").style.display = "block";
+    return;
+  }
+  document.getElementById("metodeInput").value = "Tunai";
+  document.getElementById("bayarInput").value   = nominal;
+  localStorage.setItem("lastTotal", total);
+  localStorage.setItem("lastNominal", nominal);
+  document.getElementById("formTransaksi").submit();
+}
+
+// Scanner barcode (Enter key)
+document.getElementById("scanInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const kode  = e.target.value.trim();
+    const sound = document.getElementById("bip-sound");
+    const brg   = dataBarang.find(b => b.id_barang == kode || b.kode_barang == kode);
+    if (brg) {
+      e.target.value = "";
+      tambahKeKeranjang(brg.id_barang, brg.nama_barang, brg.harga);
+      sound.play();
+    } else {
+      alert("Barang tidak ditemukan.");
+    }
+  }
+});
+
+// QR code scanner
+function onScanSuccess(decodedText) {
+  const kode  = decodedText.trim();
+  const sound = document.getElementById("bip-sound");
+  const brg   = dataBarang.find(b => b.id_barang == kode || b.kode_barang == kode);
+  if (brg) {
+    tambahKeKeranjang(brg.id_barang, brg.nama_barang, brg.harga);
+    sound.play();
+  }
+}
+new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 }, false)
+  .render(onScanSuccess);
+
+// Tampilkan popup sukses kalau ada param sukses=1
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("sukses") === "1") {
+    const total   = +localStorage.getItem("lastTotal");
+    const nominal = +localStorage.getItem("lastNominal");
+    document.getElementById("suksesTotal").innerText     = formatRupiah(total);
+    document.getElementById("suksesNominal").innerText   = formatRupiah(nominal);
+    document.getElementById("suksesKembalian").innerText = formatRupiah(nominal - total);
+    document.getElementById("popupSukses").style.display = "flex";
+    localStorage.removeItem("lastTotal");
+    localStorage.removeItem("lastNominal");
+  }
+});
+
+// Pencarian barang
+document.getElementById("searchBarang").addEventListener("input", function() {
+  const kw = this.value.toLowerCase();
+  document.querySelectorAll("#barangList .item").forEach(it => {
+    it.style.display = it.textContent.toLowerCase().includes(kw) ? "block" : "none";
+  });
+});

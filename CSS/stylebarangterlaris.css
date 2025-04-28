@@ -1,0 +1,303 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #1b2a36;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+} 
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-left: 300px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        padding-top: 60px;
+        padding-left: 40px;
+    }
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.header-logo img.logo-img {
+    height: 50px;
+}
+
+.filter {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.filter input[type="date"],
+.filter select,
+.filter button {
+    padding: 5px;
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.table-wrapper {
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #d2b48c;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #d2b48c;
+    font-weight: bold;
+}
+.container h2 {
+    color: #d2b48c; /* Ganti sesuai warna yang diinginkan */
+}
+td {
+color: #D2B48C;; /* warna teks isi tabel */
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #D2B48C;
+    color: #1B2A36;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #e3d1b8;
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button {
+    padding: 8px 20px;
+    background-color: #4e342e;
+    color: #d2b48c;
+    border: none;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #614d49;
+}
+
+/* Sidebar Style */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(213, 176, 127);
+    padding: 20px;
+    color: #1b2a36;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, width 0.3s ease;
+    overflow-y: auto; 
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar h3 {
+    margin: 0 0 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    color: #1b2a36;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul li a {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.sidebar ul li a img {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.sidebar img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.sidebar.restok-page ul li a img {
+    width: 25px !important;
+    height: 25px !important;
+    margin-right: 5px !important;
+}
+
+/* Sidebar Collapse */
+.sidebar.collapsed {
+    width: 60px;
+    overflow-x: hidden;
+    align-items: center;
+}
+
+.sidebar.collapsed .brand img {
+    width: 40px;
+}
+
+.sidebar.collapsed .user-info,
+.sidebar.collapsed ul li a span {
+    display: none;
+}
+
+.sidebar.collapsed a {
+    justify-content: center;
+    padding: 10px 0;
+    font-size: 0;
+}
+
+.sidebar.collapsed a img {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.sidebar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a span {
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed a span {
+    opacity: 0;
+    display: none;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #1b2a36;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+/* Tambahan posisi toggle-btn ketika sidebar mengecil */
+.sidebar.collapsed .toggle-btn {
+top: 60px; /* posisi diturunkan */
+left: 15px;
+}
+
+.toggle-btn.moved {
+    position: fixed;
+    top: 30px;
+    left: 15px;
+    right: auto;
+    z-index: 1000;
+}
+
+.toggle-btn img {
+    width: 24px;
+    height: auto;
+}
+
+/* Konten geser saat sidebar collapsed */
+.sidebar.collapsed ~ .container {
+    margin-left: 90px;
+    transition: margin-left 0.3s ease;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .print-area, .print-area * {
+        visibility: visible;
+    }
+
+    .print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .sidebar,
+    .toggle-btn,
+    .filter,
+    .actions,
+    .tambah-btn,
+    .aksi-btn {
+        display: none !important;
+    }
+}

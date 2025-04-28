@@ -1,0 +1,75 @@
+body { 
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    /* Tambahan untuk background image */
+    background-image: url('../icons/beground.JPG'); /* Ganti path jika berbeda */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo {
+    width: 100px; /* Sesuaikan ukuran */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column; /* Menyusun elemen ke bawah */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.login-box {
+    background-color: #D2B48C; /* Warna abu-abu */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+
+h2 {
+    margin-bottom: 20px;
+    color: #1B2A36;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #1B2A36;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4E342E;
+    color: #D2B48C;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.login-button:hover {
+    background-color: #6B4226;
+}
