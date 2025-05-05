@@ -1,3 +1,9 @@
+Anggota kelompok:
+1. RIFDA NADHIFA(23050974003)
+2. NUR HALIMATUS(23050974013)
+3. AHMAD RAFLI BIMA YANBUDI (23050974005)
+4. RAMADHANI FITRIANA (23050974034)
+   
 POSTERS:
 ![EDUSTORE (2)](https://github.com/user-attachments/assets/0d071ae0-f822-4a85-972e-fed61415a52b)
 Tampilan aplikasi:
