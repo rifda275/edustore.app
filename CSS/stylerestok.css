@@ -1,16 +1,18 @@
 body {
-    background-color: #1b2a36;
+    background-color: #feffff; /* dulu #1b2a36 */
     font-family: 'Times New Roman', Times, serif;
+ overflow-y: auto;
 }
+
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 250px;
     height: 100vh;
-    background-color: rgb(213, 176, 127);
+    background-color: #1b2a36; /* dulu rgb(213, 176, 127) */
     padding: 20px;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +38,7 @@ body {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     text-decoration: none;
     background-color: transparent;
     border-radius: 4px;
@@ -56,7 +58,7 @@ body {
 }
 
 .sidebar ul li a {
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -74,6 +76,7 @@ body {
 .sidebar ul li a img {
     width: 100px;
     margin-right: 10px;
+filter: brightness(0) invert(1); /* mengubah warna jadi putih */
 }
 
 .toggle-btn {
@@ -82,16 +85,17 @@ body {
     right: 10px;
     background-color: transparent;
     border: none;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
 }
+
 /* Tambahan posisi toggle-btn ketika sidebar mengecil */
 .sidebar.collapsed .toggle-btn {
-top: 60px; /* posisi diturunkan */
-left: 15px;
+    top: 60px; /* posisi diturunkan */
+    left: 15px;
 }
 
 .toggle-btn.moved {
@@ -101,6 +105,7 @@ left: 15px;
     right: auto;
     z-index: 1000;
 }
+
 .toggle-btn img {
     width: 24px;
     height: auto;
@@ -133,9 +138,11 @@ th {
     background-color: #d2b48c;
     font-weight: bold;
 }
+
 td {
     color: #d2b48c; /* warna teks isi tabel */
 }
+
 .container h2 {
     color: #d2b48c; /* Ganti sesuai warna yang diinginkan */
 }
@@ -150,30 +157,33 @@ td {
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
+
 .btn-success {
     background-color: #4e342E;
     color: #D2B48C;
-    text-decoration: none;
 }
 
 .btn-success:hover {
     background-color: #614d49;
 }
+
 .btn-primary {
     background-color: #527253;
     color: #D2B48C;
 }
+
 .btn-primary:hover {
     background-color: #728072;
 }
+
 .btn-danger {
     background-color: #A52A2A;
     color: #D2B48C;
 }
+
 .btn-danger:hover {
     background-color: #b24e4e;
 }
-
 
 .sidebar.collapsed {
     width: 60px;
@@ -232,7 +242,8 @@ td {
 .header-restok {
     padding-left: 20px;
 }
+
 .sidebar.collapsed ~ .container {
-margin-left: 60px;
-transition: margin-left 0.3s ease;
+    margin-left: 60px;
+    transition: margin-left 0.3s ease;
 }

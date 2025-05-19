@@ -1,199 +1,206 @@
 body {
-    background-color: #1b2a36;
+    background-color: #feffff; /* dulu #1b2a36 */
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
 }
-        
-        .form-card label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-        
-    .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        
-        .btn-primary {
-            background-color: #D2B48C;
-            color: #1B2A36;
-        }
-        
-        .btn-primary:hover {
-            background-color: #e3d1b8;
-        }
-        
-        .btn-secondary {
-            background-color: #D2B48C;
-            color: #1B2A36;
-        }
-        .btn-secondary:hover {
-            background-color: #e3d1b8;
-        }
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100vh;
-            background-color: rgb(213, 176, 127);
-            padding: 20px;
-            color: #1B2A36;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s ease;
-            overflow-y: auto; 
-        }
 
-        .sidebar.hidden {
-            transform: translateX(-100%);
-        }
+.form-card label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
 
-        .sidebar h3 {
-            margin: 0 0 30px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
 
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            color: #1B2A36;
-            text-decoration: none;
-            background-color: transparent;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: background-color 0.2s ease;
-        }
+.btn-primary {
+    background-color: #D2B48C;
+    color: #feffff; /* dulu #1B2A36 */
+}
 
-        .sidebar a:hover,
-        .sidebar a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+.btn-primary:hover {
+    background-color: #e3d1b8;
+}
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-            width: 100%;
-        }
-        .sidebar ul li a {
-            color: #1B2A36;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            font-size: 20px;
-        }
+.btn-secondary {
+    background-color: #D2B48C;
+    color: #feffff; /* dulu #1B2A36 */
+}
 
-        .sidebar img {
-            width: 120px;
-            height: auto;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
+.btn-secondary:hover {
+    background-color: #e3d1b8;
+}
 
-        .sidebar ul li a img {
-            width: 100px;
-            margin-right: 10px;
-        }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #1b2a36; /* dulu rgb(213, 176, 127) */
+    padding: 20px;
+    color: #feffff; /* dulu #1B2A36 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    overflow-y: auto; 
+}
 
-        .toggle-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: transparent;
-            border: none;
-            color: #1B2A36;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        /* Tambahan posisi toggle-btn ketika sidebar mengecil */
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar h3 {
+    margin: 0 0 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    color: #feffff; /* dulu #1B2A36 */
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar ul li a {
+    color: #feffff; /* dulu #1B2A36 */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.sidebar img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a img {
+    width: 100px;
+    margin-right: 10px;
+filter: brightness(0) invert(1); /* mengubah warna jadi putih */
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #feffff; /* dulu #1B2A36 */
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Tambahan posisi toggle-btn ketika sidebar mengecil */
 .sidebar.collapsed .toggle-btn {
     top: 60px; /* posisi diturunkan */
     left: 15px;
 }
 
-        .toggle-btn.moved {
-            position: fixed;
-            top: 30px;
-            left: 15px;
-            right: auto;
-            z-index: 1000;
-        }
+.toggle-btn.moved {
+    position: fixed;
+    top: 30px;
+    left: 15px;
+    right: auto;
+    z-index: 1000;
+}
 
-        .toggle-btn img {
-            width: 24px;
-            height: auto;
-        }
+.toggle-btn img {
+    width: 24px;
+    height: auto;
+}
 
-        .container {
-            margin-left: 300px;
-            padding: 20px;
-        }
+.container {
+    margin-left: 300px;
+    padding: 20px;
+}
 
-        .table-wrapper {
-            margin-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+.table-wrapper {
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
-        table {
-            width: 100%;
-            max-width: 1000px;
-            font-size: 16px;
-        }
+table {
+    width: 100%;
+    max-width: 1000px;
+    font-size: 16px;
+}
 
-        th, td {
-            border: 1px solid #D2B48C;
-            padding: 10px;
-            text-align: center;
-        }
+th, td {
+    border: 1px solid #D2B48C;
+    padding: 10px;
+    text-align: center;
+}
 
-        th {
-            background-color: #D2B48C; 
-            font-weight: bold;
-        }
-        td {
-            color: #D2B48C; 
-        }
-        .container h2 {
-            color: #D2B48C;
-        }
-/* Agar link <a> tampil seperti tombol */
+th {
+    background-color: #D2B48C;
+    font-weight: bold;
+}
+
+td {
+    color: #D2B48C;
+}
+
+.container h2 {
+    color: #D2B48C;
+}
+
+/* Tombol link */
 a.btn {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 14px;
-    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    text-decoration: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
-.btn-primary {
+
+a.btn-primary {
     background-color: #4e342E;
     color: #D2B48C;
-    text-decoration: none;
 }
 
-.btn-primary:hover {
+a.btn-primary:hover {
     background-color: #614d49;
 }
 
-/* Tombol untuk Edit */
 a.btn-warning {
     background-color: #527253;
     color: #D2B48C;
@@ -203,74 +210,74 @@ a.btn-warning:hover {
     background-color: #728072;
 }
 
-/* Tombol untuk Hapus */
 a.btn-danger {
     background-color: #A52A2A;
     color: #D2B48C;
-
 }
 
 a.btn-danger:hover {
     background-color: #b24e4e;
 }
-        .sidebar.collapsed {
-            width: 60px;
-            transition: width 0.3s;
-            overflow-x: hidden;
-            align-items: center;
-        }
 
-        .sidebar.collapsed .brand img {
-            width: 40px;
-        }
+.sidebar.collapsed {
+    width: 60px;
+    transition: width 0.3s;
+    overflow-x: hidden;
+    align-items: center;
+}
 
-        .sidebar.collapsed .user-info,
-        .sidebar.collapsed ul li a span {
-            display: none;
-        }
+.sidebar.collapsed .brand img {
+    width: 40px;
+}
 
-        .sidebar.collapsed + .main-content {
-            margin-left: 60px;
-            transition: margin-left 0.3s;
-        }
+.sidebar.collapsed .user-info,
+.sidebar.collapsed ul li a span {
+    display: none;
+}
 
-        .sidebar, .main-content {
-            transition: all 0.3s ease;
-        }
+.sidebar.collapsed + .main-content {
+    margin-left: 60px;
+    transition: margin-left 0.3s;
+}
 
-        .sidebar.collapsed a {
-            justify-content: center;
-            padding: 10px 0;
-            font-size: 0;
-        }
+.sidebar, .main-content {
+    transition: all 0.3s ease;
+}
 
-        .sidebar.collapsed a img {
-            width: 24px;
-            height: 24px;
-            margin: 0;
-        }
+.sidebar.collapsed a {
+    justify-content: center;
+    padding: 10px 0;
+    font-size: 0;
+}
 
-        .sidebar a img {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
+.sidebar.collapsed a img {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
 
-        .sidebar a span {
-            transition: opacity 0.3s ease;
-        }
+.sidebar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
 
-        .sidebar.collapsed a span {
-            opacity: 0;
-            display: none;
-        }
+.sidebar a span {
+    transition: opacity 0.3s ease;
+}
 
-        /* Tambahan untuk header dan tombol agar ikut geser */
-        .header-restok {
-            padding-left: 20px;
-        }
-        .sidebar.collapsed ~ .container {
+.sidebar.collapsed a span {
+    opacity: 0;
+    display: none;
+}
+
+/* Tambahan untuk header dan tombol agar ikut geser */
+.header-restok {
+    padding-left: 20px;
+}
+
+.sidebar.collapsed ~ .container {
     margin-left: 80px;
     transition: margin-left 0.3s ease;
 }

@@ -2,7 +2,7 @@
 session_start();
 include '../koneksi/config.php';
 
-$role = $_SESSION['role']; // ✅ Tambahan sesuai permintaan
+$role = $_SESSION['role'];
 
 // Ambil filter tanggal jika ada
 $filterTanggal = isset($_GET['filter_tanggal']) ? $_GET['filter_tanggal'] : '';
@@ -14,7 +14,19 @@ $query = "
         l.tanggal,
         u.nama AS kasir,
         l.total_pendapatan AS total,
-        l.jumlah_barang_terjual AS jumlah_barang
+        l.jumlah_barang_terjual AS jumlah_barang,
+        (
+            SELECT 
+                SUM((b.harga - IFNULL(r.harga_beli, 0)) * dt.jumlah) 
+            FROM detailtransaksi dt
+            JOIN barang b ON dt.id_barang = b.id_barang
+            LEFT JOIN (
+                SELECT id_barang, MAX(harga_beli) AS harga_beli
+                FROM restokbarang
+                GROUP BY id_barang
+            ) r ON b.id_barang = r.id_barang
+            WHERE dt.id_transaksi = l.id_transaksi
+        ) AS keuntungan
     FROM laporan l
     JOIN transaksi t ON l.id_transaksi = t.id_transaksi
     JOIN pengguna u ON t.id_pengguna = u.id_pengguna
@@ -35,7 +47,6 @@ $laporan = mysqli_query($conn, $query);
     <title>Laporan Penjualan</title>
     <link rel="stylesheet" href="../CSS/stylelaporan.css">
     <style>
-        /* CSS untuk pencetakan */
         @media print {
             body {
                 visibility: hidden;
@@ -53,71 +64,63 @@ $laporan = mysqli_query($conn, $query);
     </style>
 </head>
 <body>
+
 <?php 
     $currentPage = 'barang';
     include '../sidebar/sidebar.php'; 
 ?>
 
+<div class="container">
+    <h2>Laporan Penjualan</h2>
 
-    <div class="container">
-        <h2>Laporan Penjualan</h2>
+    <div class="action-bar" style="display: flex; align-items: center; gap: 10px;">
+        <a href="barang_terlaris.php" class="btn btn-danger">Lihat Barang Terlaris</a>
+        <button onclick="window.print()" class="btn btn-danger">Cetak</button>
 
-        <div class="action-bar">
-            <div class="button-filter-group">
-        <!-- Tombol cetak dan barang terlaris -->
-                <div class="button-group">
-                <button onclick="window.print()" class="btn btn-danger">Cetak</button>
-            <a href="barang_terlaris.php" class="btn btn-danger">Lihat Barang Terlaris</a>
-        </div>
-
-        <!-- Form filter tanggal -->
-        <form method="GET" class="filter-date">
-            <input type="date" name="filter_tanggal" class="btn btn-success" value="<?= isset($_GET['filter_tanggal']) ? $_GET['filter_tanggal'] : '' ?>">
+        <form method="GET" class="filter-date" style="display: flex; align-items: center; gap: 10px; margin: 0;">
+            <input type="date" name="filter_tanggal" class="btn btn-success" 
+                value="<?= isset($_GET['filter_tanggal']) ? $_GET['filter_tanggal'] : '' ?>">
             <button type="submit" class="btn btn-primary">Terapkan Filter</button>
         </form>
     </div>
-</div>
 
+    <div class="printable">
+        <div class="print-header only-print">
+            <img src="../icons/edustore.png" alt="Logo" class="logo-img">
+            <h2>Laporan Penjualan</h2>
+        </div>
 
-        
-
-        <!-- Bagian yang bisa dicetak dengan class 'printable' -->
-        <div class="printable">
-    <div class="print-header only-print">
-        <img src="../icons/edustore.png" alt="Logo" class="logo-img">
-        <h2>Laporan Penjualan</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Transaksi</th>
+                    <th>Tanggal</th>
+                    <th>Kasir</th>
+                    <th>Jumlah Pendapatan</th>
+                    <th>Total Barang</th>
+                    <th>Keuntungan</th>
+                    <th>Detil Transaksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while($row = mysqli_fetch_assoc($laporan)) : ?>
+                <tr>
+                    <td><?= $row['id_transaksi'] ?></td>
+                    <td><?= $row['tanggal'] ?></td>
+                    <td><?= $row['kasir'] ?></td>
+                    <td>Rp<?= number_format($row['total'], 0, ',', '.') ?></td>
+                    <td><?= $row['jumlah_barang'] ?></td>
+                    <td>Rp<?= number_format($row['keuntungan'] ?? 0, 0, ',', '.') ?></td>
+                    <td>
+                        <a href="../transaksi/cetak_transaksi.php?id=<?= $row['id_transaksi'] ?>">
+                            <button class="btn btn-secondary">Lihat</button>
+                        </a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID Transaksi</th>
-                <th>Tanggal</th>
-                <th>Kasir</th>
-                <th>Jumlah Pendapatan</th>
-                <th>Total Barang</th>
-                <th>Detil Transaksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while($row = mysqli_fetch_assoc($laporan)) : ?>
-            <tr>
-                <td><?= $row['id_transaksi'] ?></td>
-                <td><?= $row['tanggal'] ?></td>
-                <td><?= $row['kasir'] ?></td>
-                <td>Rp<?= number_format($row['total'], 0, ',', '.') ?></td>
-                <td><?= $row['jumlah_barang'] ?></td>
-                <td>
-                    <a href="../transaksi/cetak_transaksi.php?id=<?= $row['id_transaksi'] ?>">
-                        <button class="btn btn-secondary">Lihat</button>
-                    </a>
-                </td>
-            </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
-</div>
-
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {

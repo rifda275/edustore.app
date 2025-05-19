@@ -6,17 +6,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_barang'])) {
     $id_barang = $_POST['id_barang'];
     $jumlah = $_POST['jumlah'];
     $tanggal = date('Y-m-d'); // Tanggal dari server
+    $kategori = $_POST['kategori']; // New kategori field
     
 
     if (isset($_SESSION['id_pengguna']) && !empty($id_barang)) {
         $id_pengguna = $_SESSION['id_pengguna'];
     
-        // Simpan data restok
+        // Simpan data restok dengan kategori
         $insert = $conn->query("
             INSERT INTO restokbarang 
-                (id_pengguna, id_barang, jumlah, tanggal_restok) 
+                (id_pengguna, id_barang, jumlah, tanggal_restok, kategori) 
             VALUES 
-                ('$id_pengguna', '$id_barang', '$jumlah', '$tanggal')
+                ('$id_pengguna', '$id_barang', '$jumlah', '$tanggal', '$kategori')
         ");
     
         if ($insert) {
@@ -87,6 +88,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_barang'])) {
                     }
                     ?>
                 </select>
+            </div>
+
+            <!-- Tambahkan field Kategori -->
+            <div class="mb-3">
+                <label for="kategori" class="form-label">Kategori</label>
+               <select name="kategori" id="kategori" class="form-select" required>
+    <option value="">-- Pilih Kategori --</option>
+    <?php
+    $kategoriQuery = $conn->query("SELECT nama_kategori FROM kategoribarang");
+    while ($kategori = $kategoriQuery->fetch_assoc()) {
+        echo "<option value='" . htmlspecialchars($kategori['nama_kategori']) . "'>" . htmlspecialchars($kategori['nama_kategori']) . "</option>";
+    }
+    ?>
+</select>
             </div>
 
             <div class="mb-3">

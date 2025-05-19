@@ -1,17 +1,18 @@
 body {
-    background-color: #1b2a36;
+    background-color: #feffff; /* dulu #1b2a36 */
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
 }
+
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 250px;
     height: 100vh;
-    background-color: rgb(213, 176, 127);
+    background-color: #1b2a36; /* dulu rgb(213, 176, 127) */
     padding: 20px;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +36,7 @@ body {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     text-decoration: none;
     background-color: transparent;
     border-radius: 4px;
@@ -53,7 +54,6 @@ body {
     padding: 0;
     width: 100%;
 }
-
 
 @media (max-width: 768px) {
     .sidebar {
@@ -110,10 +110,8 @@ body {
     }
 }
 
-
-
 .sidebar ul li a {
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -131,6 +129,7 @@ body {
 .sidebar ul li a img {
     width: 100px;
     margin-right: 10px;
+filter: brightness(0) invert(1); /* mengubah warna jadi putih */
 }
 
 .toggle-btn {
@@ -139,7 +138,7 @@ body {
     right: 10px;
     background-color: transparent;
     border: none;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
@@ -158,9 +157,11 @@ body {
     right: auto;
     z-index: 1000;
 }
+
 .container h2 {
-    color: #d2b48c; /* Ganti sesuai warna yang diinginkan */
+    color: #d2b48c; /* teks header */
 }
+
 td {
     color: #d2b48c; /* warna teks isi tabel */
 }
@@ -203,29 +204,6 @@ th {
     font-weight: bold;
 }
 
-.action-bar {
-    margin-bottom: 15px;
-}
-
-.button-filter-group {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.button-group {
-    display: flex;
-    gap: 10px;
-}
-
-.filter-date {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-
 .btn {
     display: inline-block;
     padding: 8px 16px;
@@ -236,6 +214,7 @@ th {
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
+
 .btn-success {
     background-color: #4E342E;
     color: #d2b48c;
@@ -248,33 +227,40 @@ th {
 
 .btn-secondary {
     background-color: #D2B48C;
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
     text-decoration: none;
 }
+
 .btn-secondary:hover {
     background-color: #e3d1b8;
 }
+
 .btn-kembali {
     background-color: #4E342E;
     color: #D2B48C;
     text-decoration: none;
 }
+
 .btn-kembali:hover {
     background-color: #614d49;
 }
+
 .btn-primary {
     background-color: #4E342E;
     color: #D2B48C;
     text-decoration: none;
 }
+
 .btn-primary:hover {
     background-color: #614d49;
 }
+
 .btn-danger {
     background-color: #4E342E;
     color: #D2B48C;
     text-decoration: none;
 }
+
 .btn-danger:hover {
     background-color: #614d49;
 }

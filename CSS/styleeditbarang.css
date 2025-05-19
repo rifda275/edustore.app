@@ -24,9 +24,9 @@ body::before {
     left: 0;
     width: 250px;
     height: 100vh;
-    background-color: rgb(213, 176, 127);
+    background-color: #1b2a36;    /* was rgb(213, 176, 127) */
     padding: 20px;
-    color: #1B2A36;
+    color: #feffff;               /* was #1B2A36 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +51,7 @@ body::before {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    color: #1B2A36;
+    color: #feffff;               /* was white or #1B2A36 */
     text-decoration: none;
     background-color: transparent;
     border-radius: 4px;
@@ -70,8 +70,25 @@ body::before {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+
+    .container {
+        margin-left: 180px;
+        padding: 20px;
+        padding-left: 40px;
+    }
+}
+
 .sidebar ul li a {
-    color: #1B2A36;
+    color: #feffff;               /* was white or #1B2A36 */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -89,6 +106,8 @@ body::before {
 .sidebar ul li a img {
     width: 100px;
     margin-right: 10px;
+filter: brightness(0) invert(1); /* mengubah warna jadi putih */
+
 }
 
 .toggle-btn {
@@ -97,7 +116,7 @@ body::before {
     right: 10px;
     background-color: transparent;
     border: none;
-    color: #1B2A36;
+    color: #feffff;               /* was white or #1B2A36 */
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
@@ -105,7 +124,7 @@ body::before {
 }
 
 .sidebar.collapsed .toggle-btn {
-    top: 60px;
+    top: 60px; /* posisi diturunkan */
     left: 15px;
 }
 
@@ -131,7 +150,7 @@ body::before {
 }
 
 .sidebar.collapsed ~ .container {
-    margin-left: 80px;
+    margin-left: 80px; /* was 100px or 90px */
     transition: margin-left 0.3s ease;
     overflow-y: auto;
     height: 100vh;
@@ -142,6 +161,7 @@ body::before {
     padding-left: 20px;
     padding-right: 20px;
 }
+
 .sidebar.collapsed {
     width: 60px;
     transition: width 0.3s;
@@ -204,18 +224,11 @@ body::before {
     width: 100%;
     margin: 40px auto;
     padding: 20px;
-    background: #D2B48c;
+    background: #D2B48C;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     position: relative;
-    height: auto;
-    overflow: unset !important;
-    max-height: none;
-    top: unset;
-    left: unset;
-    transform: none;
-    z-index: 1;
-    color: #1B2A36;
+    color: #feffff;               /* was #1B2A36 */
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -228,8 +241,6 @@ body::before {
     left: calc(50% - 160px);
     top: calc(50% + 250px);
     transform: translate(-50%, -50%);
-    height: auto;
-    max-height: none;
 }
 
 .card-form h2 {
@@ -252,7 +263,6 @@ body::before {
 .card-form input,
 .card-form select,
 .card-form textarea {
-    display: block;
     width: 100%;
     padding: 8px;
     font-size: 14px;
@@ -261,28 +271,28 @@ body::before {
 }
 
 .save-btn {
-    background-color: #527253;;
+    background-color: #527253;
     color: #D2B48C;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-  .cancel-btn {
-    background-color: #A52A2A;;
+.cancel-btn {
+    background-color: #A52A2A;
     color: #D2B48C;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px; /* Turunkan tombol */
-  }
+    margin-top: 20px;
+}
 
-  .save-btn:hover {
+.save-btn:hover {
     background-color: #728072;
-  }
+}
 
-  .cancel-btn:hover {
+.cancel-btn:hover {
     background-color: #b24e4e;
-  }
+}

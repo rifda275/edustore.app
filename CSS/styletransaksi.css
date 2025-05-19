@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
     background: #f4f4f4;
     padding: 20px;
-    background-color: #1b2a36;
+    background-color: #feffff; /* dulu #1b2a36 */
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -23,13 +23,14 @@ body {
     margin-top: 20px;
     margin-right: 20px; /* beri jarak antar card */
     min-width: 0; /* mencegah overflow */
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
 }
 
 .barang h3 {
     margin-bottom: 10px;
     color: #D2B48C;
 }
+
 .keranjang {
     background: #D2B48C;
     padding: 20px;
@@ -39,13 +40,11 @@ body {
     margin-top: 20px;
 }
 
-
 .barang-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
-
 
 .barang-list .item {
     width: 180px; /* sebelumnya mungkin 150px */
@@ -57,12 +56,10 @@ body {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-
 .barang-list .item:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
 
 .item {
     border: 1px solid #ddd;
@@ -112,9 +109,10 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
 .btn-order:hover {
     background-color: #385739;
-  }
+}
 
 .btn-batal {
     background-color: #A52A2A;
@@ -128,11 +126,11 @@ body {
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.2s ease;
-  }
-  .btn-batal:hover {
+}
+
+.btn-batal:hover {
     background-color: #8B1A1A;
-  }
-  
+}
 
 #searchBarang {
     margin-bottom: 20px; /* Memberikan jarak antara input pencarian dan daftar barang */
@@ -184,7 +182,7 @@ body {
 
 .warning {
     margin-top: 10px;
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
     font-size: 12px;
 }
 
@@ -202,16 +200,15 @@ body {
     border: none;      /* Menghilangkan border */
 }
 
-
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 250px;
     height: 100vh;
-    background-color: rgb(213, 176, 127);
+    background-color: #1b2a36; /* dulu rgb(213, 176, 127) */
     padding: 20px;
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,7 +233,7 @@ body {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
     text-decoration: none;
     background-color: transparent;
     border-radius: 4px;
@@ -254,8 +251,9 @@ body {
     padding: 0;
     width: 100%;
 }
+
 .sidebar ul li a {
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -269,24 +267,26 @@ body {
     object-fit: contain;
     margin-bottom: 10px;
 }
+
 .toggle-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     background-color: transparent;
     border: none;
-    color: #1b2a36;
+    color: #feffff; /* dulu #1b2a36 */
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
 }
+
 .container h2 {
-    color: #1B2A36; /* Ganti sesuai warna yang diinginkan */
+    color: #feffff; /* dulu #1B2A36 */
 }
+
 .judul-pesanan {
-    color: #1B2A36;
-  
+    color: #feffff; /* dulu #1B2A36 */
 }
 
 .btn-orange {
@@ -307,8 +307,8 @@ body {
 
 /* Tambahan posisi toggle-btn ketika sidebar mengecil */
 .sidebar.collapsed .toggle-btn {
-top: 60px; /* posisi diturunkan */
-left: 15px;
+    top: 60px; /* posisi diturunkan */
+    left: 15px;
 }
 
 .toggle-btn.moved {
@@ -372,7 +372,6 @@ left: 15px;
     display: none;
 }
 
-
 .sidebar.collapsed ~ .container {
     margin-left: 70px; /* sesuaikan dengan sidebar collapse */
     width: calc(100% - 70px);
@@ -396,16 +395,19 @@ left: 15px;
     margin-left: 20px !important;
     transition: margin-left 0.3s ease;
 }
+
 .container {
     display: flex;
     height: 100vh;
-  }
-  .content {
+}
+
+.content {
     flex: 1; /* ini yang bikin area putih melebar */
     background-color: #f5f5f5;
     padding: 2rem;
-  }
-  .sidebar.collapsed ~ .wrapper .judul-halaman {
+}
+
+.sidebar.collapsed ~ .wrapper .judul-halaman {
     margin-left: 150px; /* Menyesuaikan margin kiri agar konten tidak terpotong */
 }
 
@@ -418,6 +420,7 @@ left: 15px;
 .sidebar.collapsed ~ .main-content p {
     margin-left: 150px; /* Ketika sidebar terkecil, margin kiri juga harus disesuaikan */
 }
+
 /* Kondisi default sebelum sidebar collapse */
 .judul-halaman {
     margin-left: 270px; /* Kondisi normal */
@@ -442,6 +445,7 @@ left: 15px;
 .sidebar.collapsed ~ .main-content p {
     margin-left: 100px !important; /* Geser lebih jauh ke kanan saat sidebar collapse */
 }
+
 .info-pembayaran h2 {
     text-align: center;
     margin-bottom: 20px;

@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #1b2a36;
+    background-color: #feffff; /* was #1b2a36 */
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
 } 
@@ -61,6 +61,9 @@ table {
     max-width: 1000px;
     font-size: 16px;
     margin-top: 10px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 th, td {
@@ -73,11 +76,13 @@ th {
     background-color: #d2b48c;
     font-weight: bold;
 }
+
 .container h2 {
     color: #d2b48c; /* Ganti sesuai warna yang diinginkan */
 }
+
 td {
-color: #D2B48C;; /* warna teks isi tabel */
+    color: #d2b48c; /* warna teks isi tabel */
 }
 
 .btn {
@@ -92,8 +97,8 @@ color: #D2B48C;; /* warna teks isi tabel */
 }
 
 .btn-primary {
-    background-color: #D2B48C;
-    color: #1B2A36;
+    background-color: #d2b48c;
+    color: #feffff; /* was #1b2a36 */
     text-decoration: none;
 }
 
@@ -126,9 +131,9 @@ color: #D2B48C;; /* warna teks isi tabel */
     left: 0;
     width: 250px;
     height: 100vh;
-    background-color: rgb(213, 176, 127);
+    background-color: #1b2a36; /* was rgb(213, 176, 127) */
     padding: 20px;
-    color: #1b2a36;
+    color: #feffff;            /* was #1b2a36 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,7 +164,7 @@ color: #D2B48C;; /* warna teks isi tabel */
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    color: #1b2a36;
+    color: #feffff;            /* was #1b2a36 */
     text-decoration: none;
     background-color: transparent;
     border-radius: 4px;
@@ -180,6 +185,7 @@ color: #D2B48C;; /* warna teks isi tabel */
 .sidebar ul li a img {
     width: 100px;
     margin-right: 10px;
+ filter: brightness(0) invert(1); /* mengubah warna jadi putih */
 }
 
 .sidebar img {
@@ -245,16 +251,17 @@ color: #D2B48C;; /* warna teks isi tabel */
     right: 10px;
     background-color: transparent;
     border: none;
-    color: #1b2a36;
+    color: #feffff;            /* was #1b2a36 */
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
 }
+
 /* Tambahan posisi toggle-btn ketika sidebar mengecil */
 .sidebar.collapsed .toggle-btn {
-top: 60px; /* posisi diturunkan */
-left: 15px;
+    top: 60px; /* posisi diturunkan */
+    left: 15px;
 }
 
 .toggle-btn.moved {

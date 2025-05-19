@@ -1,15 +1,16 @@
-body { 
+body {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 
-    /* Tambahan untuk background image */
-    background-image: url('../icons/beground.JPG'); /* Ganti path jika berbeda */
+    /* Background image absolut dan lowercase */
+    background-image: url('https://edustore.markaz.my.id/icons/beground.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: yellow;
 }
 
 .logo {
@@ -37,10 +38,9 @@ body {
     width: 300px;
 }
 
-
 h2 {
     margin-bottom: 20px;
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
 }
 
 label {
@@ -48,7 +48,7 @@ label {
     text-align: left;
     margin-top: 10px;
     font-size: 14px;
-    color: #1B2A36;
+    color: #feffff; /* dulu #1B2A36 */
 }
 
 input {

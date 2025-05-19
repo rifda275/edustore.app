@@ -45,13 +45,12 @@ th {
     font-size: 14px;
 }
 
-/* General */ 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    background-color: #1b2a36;
+    background-color: #feffff; 
     overflow: hidden;
 }
 
@@ -59,8 +58,8 @@ body {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #c79a6a;
-    padding: 20px;
+    background-color: #1b2a36;   
+padding: 20px;
     color: white;
     position: relative;
     overflow-y: auto; 
@@ -95,6 +94,8 @@ body {
 .sidebar ul li a img {
     width: 20px;
     margin-right: 10px;
+filter: brightness(0) invert(1); /* mengubah warna jadi putih */
+
 }
 
 .sidebar ul li a:hover {
@@ -256,7 +257,7 @@ left: 15px;
     
 }
 
-/* ✅ Tambahan: agar tabel turun di bawah judul "Data Transaksi" */
+/* ? Tambahan: agar tabel turun di bawah judul "Data Transaksi" */
 .data-transaksi-container {
     display: flex;
     flex-direction: column;
@@ -269,12 +270,11 @@ left: 15px;
 
 .data-transaksi-container h2 {
     margin-bottom: 10px;
-    margin-left: 5px; /* ubah dari 100px menjadi 5px */
-    color: #ffffff; /* Ganti sesuai warna yang diinginkan */
-    
+    color: #D2B48C; 
 }
 
-/* ✅ Tambahan: kecilkan panjang dan font tabel */
+
+/* ? Tambahan: kecilkan panjang dan font tabel */
 .table-container table {
     max-width: 900px;
     margin: auto;

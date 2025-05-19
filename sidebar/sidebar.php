@@ -1,14 +1,16 @@
 <?php 
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 $base = (strpos($_SERVER['PHP_SELF'], 'restokbarang') !== false 
-      || strpos($_SERVER['PHP_SELF'], 'transaksi') !== false 
-      || strpos($_SERVER['PHP_SELF'], 'pengguna') !== false 
-      || strpos($_SERVER['PHP_SELF'], 'barang') !== false 
-      || strpos($_SERVER['PHP_SELF'], 'laporan') !== false 
-      || strpos($_SERVER['PHP_SELF'], 'pengaturan') !== false)
-      ? '../' : '';
+    || strpos($_SERVER['PHP_SELF'], 'transaksi') !== false 
+    || strpos($_SERVER['PHP_SELF'], 'pengguna') !== false 
+    || strpos($_SERVER['PHP_SELF'], 'barang') !== false 
+    || strpos($_SERVER['PHP_SELF'], 'laporan') !== false 
+    || strpos($_SERVER['PHP_SELF'], 'pengaturan') !== false)
+    ? '../' : '';
 
 $isRestokPage = strpos($_SERVER['PHP_SELF'], 'restok_barang.php') !== false;
 
@@ -18,11 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['keluar'])) {
     header("Location: {$base}login.php");
     exit();
 }
+
 ?>
 
 <div class="sidebar <?php echo ($isRestokPage ? 'restok-page' : ''); ?>" id="sidebar">
     <!-- Tombol toggle -->
-    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <button class="toggle-btn" onclick="toggleSidebar()">â˜°</button>
 
     <div class="brand">
         <img src="<?= $base ?>icons/edustore.png" alt="EduStore Logo">
@@ -34,29 +37,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['keluar'])) {
     <ul>
         <!-- Tambahkan menu Home sebagai item pertama -->
         <li>
-            <a href="<?= $base ?>dashboard_<?php echo strtolower($_SESSION['role']); ?>.php">
+            <a href="<?= $base ?>dashboard_<?php echo $_SESSION['role']; ?>.php">
                 <img src="<?= $base ?>icons/home.png"><span>Home</span>
             </a>
         </li>
 
         <?php if ($_SESSION['role'] == 'Admin') : ?>
-            <li><a href="<?= $base ?>transaksi/transaksi.php"><img src="<?= $base ?>icons/transaksi.png"><span>Transaksi</span></a></li>
+            <li><a href="<?= $base ?>transaksi/transaksi.php"><img src="https://edustore.markaz.my.id/icons/Transaksi.png"><span>Transaksi</span></a></li>
             <li><a href="<?= $base ?>barang/barang.php"><img src="<?= $base ?>icons/Tambah barang.png"><span>Barang</span></a></li>
             <li><a href="<?= $base ?>restokbarang/restok_barang.php"><img src="<?= $base ?>icons/restok barang.png"><span>Restok barang</span></a></li>
-            <li><a href="<?= $base ?>pengguna/pengguna.php"><img src="<?= $base ?>icons/pengguna.png"><span>pengguna</span></a></li>
-            <li><a href="<?= $base ?>laporan/laporan.php"><img src="<?= $base ?>icons/laporan.png"><span>Laporan</span></a></li>
+            <li><a href="<?= $base ?>pengguna/pengguna.php"><img src="https://edustore.markaz.my.id/icons/Pengguna.png"><span>pengguna</span></a></li>
+            <li><a href="<?= $base ?>laporan/laporan.php"><img src="https://edustore.markaz.my.id/icons/Laporan.png"><span>Laporan</span></a></li>
             <li><a href="<?= $base ?>pengaturan/pengaturan.php"><img src="<?= $base ?>icons/pengaturan.png"><span>Pengaturan</span></a></li>
-
         <?php elseif ($_SESSION['role'] == 'Manager') : ?>
             <li><a href="<?= $base ?>barang/barang.php"><img src="<?= $base ?>icons/Tambah barang.png"><span>Barang</span></a></li>
             <li><a href="<?= $base ?>restokbarang/restok_barang.php"><img src="<?= $base ?>icons/restok barang.png"><span>Restok barang</span></a></li>
-            <li><a href="<?= $base ?>laporan/laporan.php"><img src="<?= $base ?>icons/laporan.png"><span>Laporan</span></a></li>
+            <li><a href="<?= $base ?>laporan/laporan.php"><img src="<?= $base ?>icons/Laporan.png"</span>Laporan</a></li>
             <li><a href="<?= $base ?>pengaturan/pengaturan.php"><img src="<?= $base ?>icons/pengaturan.png"><span>Pengaturan</span></a></li>
-
         <?php elseif ($_SESSION['role'] == 'Kasir') : ?>
             <li><a href="<?= $base ?>barang/barang.php"><img src="<?= $base ?>icons/Tambah barang.png"><span>Barang</span></a></li>
-            <li><a href="<?= $base ?>transaksi/transaksi.php"><img src="<?= $base ?>icons/transaksi.png"><span>Transaksi</span></a></li>
-            <li><a href="<?= $base ?>laporan/laporan.php"><img src="<?= $base ?>icons/laporan.png"><span>Laporan</span></a></li>
+            <li><a href="<?= $base ?>transaksi/transaksi.php"><img src="<?= $base ?>icons/Transaksi.png"><span>Transaksi</span></a></li>
+            <li><a href="<?= $base ?>laporan/laporan.php"><img src="<?= $base ?>icons/Laporan.png"><span>Laporan</span></a></li>
             <li><a href="<?= $base ?>pengaturan/pengaturan.php"><img src="<?= $base ?>icons/pengaturan.png"><span>Pengaturan</span></a></li>
         <?php endif; ?>
 
@@ -87,9 +88,11 @@ function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("collapsed");
 }
+
 function tampilkanPopupLogout() {
     document.getElementById("popupLogout").style.display = "flex";
 }
+
 function sembunyikanPopupLogout() {
     document.getElementById("popupLogout").style.display = "none";
 }

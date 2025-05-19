@@ -1,4 +1,4 @@
-<?php  
+<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,6 +11,7 @@ if (!isset($_GET['id'])) {
 
 $id_barang = $_GET['id'];
 
+// Ambil data barang
 $query = "SELECT * FROM barang WHERE id_barang=?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $id_barang);
@@ -22,9 +23,11 @@ if (!$data) {
     die("Error: Data barang tidak ditemukan.");
 }
 
+// Ambil data kategori untuk dropdown
 $query_kategori = "SELECT * FROM kategoribarang";
 $result_kategori = $conn->query($query_kategori);
 
+// Proses simpan update barang
 if (isset($_POST['simpan'])) {
     $kode_barang = $_POST['kode_barang'];
     $nama_barang = $_POST['nama_barang'];
@@ -74,8 +77,8 @@ if (isset($_POST['simpan'])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tambah Barang</title>
-  <link rel="stylesheet" href="../CSS/styleeditbarang.css"> 
+  <title>Edit Barang</title>
+  <link rel="stylesheet" href="../CSS/styleeditbarang.css" />
   <style>
     #reader {
       width: 300px;
@@ -83,8 +86,8 @@ if (isset($_POST['simpan'])) {
     }
   </style>
 </head>
-
 <body>
+
 <?php 
     $currentPage = 'barang';
     include '../sidebar/sidebar.php'; 
@@ -92,94 +95,88 @@ if (isset($_POST['simpan'])) {
 
 <div class="container">
   <div class="card-form">
-        <h2>Edit Barang</h2>
-        <form method="POST" enctype="multipart/form-data">
-        
-                <div>
-                    <label>Kode Barang:</label>
-                    <input type="text" id="kode_barang" name="kode_barang" value="<?= htmlspecialchars($data['kode_barang']) ?>" required>
-                </div>
+    <h2>Edit Barang</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <div>
+        <label>Kode Barang:</label>
+        <input type="text" id="kode_barang" name="kode_barang" value="<?= htmlspecialchars($data['kode_barang']) ?>" required>
+      </div>
 
-                <div>
-                    <label>Nama Barang:</label>
-                    <input type="text" name="nama_barang" value="<?= htmlspecialchars($data['nama_barang']) ?>" required>
-                </div>
+      <div>
+        <label>Nama Barang:</label>
+        <input type="text" name="nama_barang" value="<?= htmlspecialchars($data['nama_barang']) ?>" required>
+      </div>
 
-                <div>
-                    <label>Kategori:</label>
-                    <select name="id_kategori" required>
-                        <option value="">Pilih Kategori</option>
-                        <?php while ($row = $result_kategori->fetch_assoc()) { ?>
-                            <option value="<?= $row['id_kategori'] ?>" <?= ($row['id_kategori'] == $data['id_kategori']) ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($row['nama_kategori']) ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </div>
+      <div>
+        <label>Kategori:</label>
+        <select name="id_kategori" required>
+          <option value="">Pilih Kategori</option>
+          <?php while ($row = $result_kategori->fetch_assoc()) { ?>
+            <option value="<?= $row['id_kategori'] ?>" <?= ($row['id_kategori'] == $data['id_kategori']) ? 'selected' : '' ?>>
+              <?= htmlspecialchars($row['nama_kategori']) ?>
+            </option>
+          <?php } ?>
+        </select>
+      </div>
 
-                <div>
-                    <label>Harga:</label>
-                    <input type="number" name="harga" value="<?= $data['harga'] ?>" required>
-                </div>
+      <div>
+        <label>Harga:</label>
+        <input type="number" name="harga" value="<?= $data['harga'] ?>" required>
+      </div>
 
-                <div>
-                    <label>Stok:</label>
-                    <input type="number" name="stok" value="<?= $data['stok'] ?>" required>
-                </div>
+      <div>
+        <label>Stok:</label>
+        <input type="number" name="stok" value="<?= $data['stok'] ?>" required>
+      </div>
 
-                <div>
-                    <label>Tanggal Ditambahkan:</label>
-                    <input type="date" name="tanggal_ditambahkan" value="<?= date('Y-m-d', strtotime($data['tanggal_ditambahkan'])) ?>" readonly>
-                </div>
+      <div>
+        <label>Tanggal Ditambahkan:</label>
+        <input type="date" name="tanggal_ditambahkan" value="<?= date('Y-m-d', strtotime($data['tanggal_ditambahkan'])) ?>" readonly>
+      </div>
 
-                <div class="full-width">
-                    <label>Gambar Saat Ini:</label><br>
-                    <?php if (!empty($data['gambar'])) { ?>
-                        <img src="../uploads/<?= $data['gambar'] ?>" width="100"><br>
-                    <?php } else { ?>
-                        <i>Tidak ada gambar</i><br>
-                    <?php } ?>
-                </div>
+      <div class="full-width">
+        <label>Gambar Saat Ini:</label><br>
+        <?php if (!empty($data['gambar'])) { ?>
+          <img src="../uploads/<?= $data['gambar'] ?>" width="100"><br>
+        <?php } else { ?>
+          <i>Tidak ada gambar</i><br>
+        <?php } ?>
+      </div>
 
-                <div class="full-width">
-                    <label>Gambar Baru (jika ingin diganti):</label>
-                    <input type="file" name="gambar" accept="image/*">
-                </div>
-            
+      <div class="full-width">
+        <label>Gambar Baru (jika ingin diganti):</label>
+        <input type="file" name="gambar" accept="image/*">
+      </div>
 
-            <div style="margin-top: 5px;">
-                <h3>Atau scan barcode di bawah ini:</h3>
-                <div id="reader" style="width: 100%; max-width: 500px; margin: auto;"></div>
-            </div>
+      <div style="margin-top: 5px;">
+        <h3>Atau scan barcode di bawah ini:</h3>
+        <div id="reader" style="width: 100%; max-width: 500px; margin: auto;"></div>
+      </div>
 
-            <div style="text-align:center;">
-                <button type="submit" name="simpan" class="save-btn">Simpan Perubahan</button>
-                <button type="button" class="cancel-btn" onclick="window.location.href='barang.php'">Batal</button>
-            </div>
-        </form>
-    </div> 
+      <div style="text-align:center;">
+        <button type="submit" name="simpan" class="save-btn">Simpan Perubahan</button>
+        <button type="button" class="cancel-btn" onclick="window.location.href='barang.php'">Batal</button>
+      </div>
+    </form>
+  </div> 
 </div>
 
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script>
+  function onScanSuccess(decodedText, decodedResult) {
+    document.getElementById("kode_barang").value = decodedText;
+    html5QrcodeScanner.clear();
+    alert("Kode barang berhasil dipindai: " + decodedText);
+  }
 
- <div id="reader"></div>
-    </div>
-  </div>
+  const html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader",
+    { fps: 10, qrbox: 250 },
+    false
+  );
+  html5QrcodeScanner.render(onScanSuccess);
 
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-  <script>
-    function onScanSuccess(decodedText, decodedResult) {
-      document.getElementById("kode_barang").value = decodedText;
-      html5QrcodeScanner.clear();
-      alert("Kode barang berhasil dipindai: " + decodedText);
-    }
-
-    const html5QrcodeScanner = new Html5QrcodeScanner(
-      "reader",
-      { fps: 10, qrbox: 250 },
-      false
-    );
-    html5QrcodeScanner.render(onScanSuccess);
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const toggleBtn = document.getElementById("toggleSidebar");
     const sidebar = document.querySelector(".sidebar");
     const container = document.querySelector(".container");
@@ -188,8 +185,7 @@ if (isset($_POST['simpan'])) {
       sidebar.classList.toggle("collapsed");
       toggleBtn.classList.toggle("moved");
     });
-  });
-
-  </script>
+  });
+</script>
 </body>
 </html>

@@ -1,6 +1,12 @@
 <?php
+ob_start(); // Mulai buffer output agar tulisan dari config tidak langsung muncul
+
 include '../koneksi/config.php';
+
+ob_clean(); // Hapus semua output awal (seperti "Koneksi berhasil!")
+
 session_start();
+
 $nama_kasir = $_SESSION['nama'] ?? 'Kasir';
 
 if (!isset($_GET['id'])) {
@@ -48,40 +54,40 @@ $nama_pelanggan = $data_semua[0]['pelanggan'];
   <meta charset="UTF-8">
   <title>Cetak Struk</title>
   <style>
-  body {
-    font-family: 'Courier New', monospace;
-    width: 300px;
-    margin: auto;
-    padding: 10px;
-    font-size: 20px;
-  }
-  .header, .footer {
-    text-align: center;
-  }
-  .header img {
-    width: 100px;
-    margin-bottom: 5px;
-  }
-  .line {
-    border-top: 1px dashed #000;
-    margin: 12px 0;
-  }
-  table {
-    width: 100%;
-    font-size: 20px;
-  }
-  td.right {
-    text-align: right;
-  }
-  td.bold {
-    font-weight: bold;
-  }
-  .thanks {
-    margin-top: 18px;
-    font-weight: bold;
-    font-size: 20px;
-  }
-</style>
+    body {
+      font-family: 'Courier New', monospace;
+      width: 300px;
+      margin: auto;
+      padding: 10px;
+      font-size: 20px;
+    }
+    .header, .footer {
+      text-align: center;
+    }
+    .header img {
+      width: 100px;
+      margin-bottom: 5px;
+    }
+    .line {
+      border-top: 1px dashed #000;
+      margin: 12px 0;
+    }
+    table {
+      width: 100%;
+      font-size: 20px;
+    }
+    td.right {
+      text-align: right;
+    }
+    td.bold {
+      font-weight: bold;
+    }
+    .thanks {
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body onload="window.print()">
 
