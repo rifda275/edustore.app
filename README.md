@@ -6,3 +6,5 @@ ANGGOTA KELOMPOK:
 
 1. login
    ![image](https://github.com/user-attachments/assets/b8a10646-baa5-4354-bc51-66530973c14c)
+2. Dashboard
+   Picture 526109299, Gambar
