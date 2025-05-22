@@ -6,7 +6,8 @@ ANGGOTA KELOMPOK:
 
 1. login
    ![image](https://github.com/user-attachments/assets/b8a10646-baa5-4354-bc51-66530973c14c)
-2. Dashboard
+   
+3. Dashboard
    ![image](https://github.com/user-attachments/assets/fc720cb3-78de-49b7-9e0f-66fdeb70c6f1)
 4. Barang
    ![image](https://github.com/user-attachments/assets/379de15e-cc07-4dbe-b1ff-16bae717f788)
