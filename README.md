@@ -10,9 +10,6 @@ ANGGOTA KELOMPOK:
    ![image](https://github.com/user-attachments/assets/fc720cb3-78de-49b7-9e0f-66fdeb70c6f1)
 3. Barang
    ![image](https://github.com/user-attachments/assets/379de15e-cc07-4dbe-b1ff-16bae717f788)
-   a. Tambah barang
-   
-   b. Edit Barang
    ![image](https://github.com/user-attachments/assets/46f0655d-0c88-44bd-8571-4274fe3d8fe7)
 
 
