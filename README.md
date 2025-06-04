@@ -32,6 +32,9 @@ Tampilan aplikasi:
 9. pengaturan
    ![image](https://github.com/user-attachments/assets/388e731e-188c-4fb4-89e9-82ac7aefdc1e)
 
+
+
+
    EduStore  adalah aplikasi kasir berbasis web yang dirancang untuk membantu toko perlengkapan sekolah dalam mengelola stok barang, transaksi penjualan, dan pelaporan secara digital dan terstruktur. Aplikasi ini dilengkapi dengan fitur multi-role (Admin, Manager, Kasir) untuk memastikan keamanan dan efisiensi dalam pengelolaan toko.
 
 Tujuan Pengembangan
