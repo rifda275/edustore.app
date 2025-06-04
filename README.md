@@ -4,6 +4,11 @@ ANGGOTA KELOMPOK:
 3. Ramadhani Fitriana (23050974034)
 4. Ahmad Rafli Bima (23050974005)
 
+Universitas Negeri Surabaya  
+Program Studi Pendidikan Teknologi Informasi  
+Tahun 2025
+
+
 ![EDUSTORE (3)](https://github.com/user-attachments/assets/0a641102-c9fc-49ff-88e0-6ba6364cb22c)
 
 Tampilan aplikasi:
@@ -26,3 +31,63 @@ Tampilan aplikasi:
    ![image](https://github.com/user-attachments/assets/406c8aef-b638-46c6-b727-0839db285cca)
 9. pengaturan
    ![image](https://github.com/user-attachments/assets/388e731e-188c-4fb4-89e9-82ac7aefdc1e)
+
+   EduStore  adalah aplikasi kasir berbasis web yang dirancang untuk membantu toko perlengkapan sekolah dalam mengelola stok barang, transaksi penjualan, dan pelaporan secara digital dan terstruktur. Aplikasi ini dilengkapi dengan fitur multi-role (Admin, Manager, Kasir) untuk memastikan keamanan dan efisiensi dalam pengelolaan toko.
+
+Tujuan Pengembangan
+
+- Mempermudah akses dan pembelian perlengkapan sekolah.
+- Meningkatkan efisiensi pengelolaan stok dan transaksi.
+- Menyediakan sistem dokumentasi laporan penjualan dan restok yang terstruktur.
+- Mendukung digitalisasi toko dan meningkatkan transparansi transaksi.
+
+
+ Fitur Utama
+
+Autentikasi
+- Login dengan sistem role-based (Admin, Manager, Kasir)
+- Logout dan pengelolaan akun
+
+Transaksi
+- Melakukan transaksi pembelian barang
+- Cetak struk (otomatis & historis)
+- Pilih metode pembayaran (tunai/digital)
+- Riwayat transaksi
+
+ Kelola Barang
+- Tambah, edit, dan hapus barang
+- Dukungan input barcode (manual & scan)
+- Upload gambar produk
+
+Restok Barang
+- Tambah dan kelola data restok
+- Pantau stok barang
+- Scan atau input manual kode barang
+
+Kelola Pengguna (Admin)
+- Tambah, edit, dan hapus pengguna
+- Manajemen hak akses (role)
+
+Laporan
+- Laporan harian, bulanan, dan tahunan
+- Filter & cetak barang terlaris
+- Cetak detail transaksi dan struk
+
+ Pengaturan
+- Edit profil akun (nama, username, password, role)
+
+ Teknologi yang Digunakan
+
+- Frontend: HTML, CSS, JavaScript
+- Backend: PHP
+- Database: MySQL
+- IDE: Visual Studio Code
+Metodologi Pengembangan
+
+Aplikasi ini dikembangkan menggunakan metode Waterfall, dengan tahapan:
+1. Analisis Kebutuhan
+2. Desain Sistem
+3. Implementasi
+4. Pengujian
+5. Evaluasi
+6. Pemeliharaan 
